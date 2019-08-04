@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter("/*") //wszystko, to co po znaku '/'
 public class EncodingFilter extends HttpFilter {
 
     @Override
