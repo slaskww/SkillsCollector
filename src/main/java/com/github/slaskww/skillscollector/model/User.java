@@ -1,24 +1,35 @@
 package com.github.slaskww.skillscollector.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "users")
-public class User  {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "first_name")
     private String firstName;
-    @Column(name = "last_name")
+
+    @Column(name="last_name")
     private String lastName;
+
     @Column(nullable = false)
     private String password;
+
     @Column(nullable = false)
     private String username;
+
+    @ManyToMany
+    @JoinTable(name = "user_known_sources",
+            joinColumns = {@JoinColumn(name="users_id")},
+            inverseJoinColumns = {@JoinColumn(name="sources_id")})
+    private Set<Source> sourceSet = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -60,6 +71,14 @@ public class User  {
         this.username = username;
     }
 
+    public Set<Source> getSourceSet() {
+        return sourceSet;
+    }
+
+    public void setSourceSet(Set<Source> sourceSet) {
+        this.sourceSet = sourceSet;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,13 +87,14 @@ public class User  {
         return Objects.equals(id, user.id) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(username, user.username);
+                password.equals(user.password) &&
+                username.equals(user.username) &&
+                Objects.equals(sourceSet, user.sourceSet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, password, username);
+        return Objects.hash(id, firstName, lastName, password, username, sourceSet);
     }
 
     @Override
@@ -85,6 +105,7 @@ public class User  {
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", username='" + username + '\'' +
+                ", sourceSet=" + sourceSet +
                 '}';
     }
 }

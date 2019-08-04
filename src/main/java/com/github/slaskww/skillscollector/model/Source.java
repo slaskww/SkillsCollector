@@ -1,7 +1,9 @@
 package com.github.slaskww.skillscollector.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "sources")
@@ -10,10 +12,16 @@ public class Source {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, nullable = false)
+    @Column()
+    private String description;
+    @Column(nullable = false)
     private String name;
 
-    private String description;
+    @ManyToMany
+    @JoinTable(name = "sources_attached_skills",
+            joinColumns = {@JoinColumn(name = "sources_id")},
+            inverseJoinColumns = {@JoinColumn(name = "skills_id")})
+    private Set<Skill> skills = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -21,14 +29,6 @@ public class Source {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
@@ -39,6 +39,31 @@ public class Source {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
+
+    @Override
+    public String toString() {
+        return "Source{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", name='" + name + '\'' +
+                ", skills=" + skills +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,21 +71,13 @@ public class Source {
         if (o == null || getClass() != o.getClass()) return false;
         Source source = (Source) o;
         return Objects.equals(id, source.id) &&
-                Objects.equals(name, source.name) &&
-                Objects.equals(description, source.description);
+                Objects.equals(description, source.description) &&
+                name.equals(source.name) &&
+                Objects.equals(skills, source.skills);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description);
-    }
-
-    @Override
-    public String toString() {
-        return "Source{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return Objects.hash(id, description, name, skills);
     }
 }

@@ -1,5 +1,10 @@
 package com.github.slaskww.skillscollector.listeners;
 
+import com.github.slaskww.skillscollector.model.Skill;
+import com.github.slaskww.skillscollector.model.Source;
+import com.github.slaskww.skillscollector.model.User;
+
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -26,7 +31,7 @@ public class HibernateInitializer implements ServletContextListener {
             // Nazwę użytkownika dostosuj do swojej instalacji MySQL
             hbnProperties.put(Environment.USER, "root");
             // Hasło użytkownika dostosuj do swojej instalacji MySQL
-            hbnProperties.put(Environment.PASS, "p2r2pet0wk2");
+            hbnProperties.put(Environment.PASS, "p2");
             hbnProperties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
             hbnProperties.put(Environment.SHOW_SQL, "true");
             hbnProperties.put(Environment.FORMAT_SQL, "true");
@@ -38,16 +43,18 @@ public class HibernateInitializer implements ServletContextListener {
 
             // Odkomentuj poniższe instrukcje po utworzeniu klas encji (kolejne zadania)
 
-            //configuration.addAnnotatedClass(User.class);
-            //configuration.addAnnotatedClass(Source.class);
-            //configuration.addAnnotatedClass(Skill.class);
+            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(Source.class);
+            configuration.addAnnotatedClass(Skill.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
             SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
             sce.getServletContext().setAttribute("session_factory", sessionFactory);
 
         } catch (Exception e) {
+
 ;        }
 
 
