@@ -1,11 +1,13 @@
-package com.github.slaskww.skillscollector.model;
+package com.github.slaskww.skillscollector.dto;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 
 
 @Entity
-@Table(name = "skills")
+@Table(name = "SKILLS")
 public class Skill {
 
     @Id
@@ -14,6 +16,9 @@ public class Skill {
 
     @Column(unique = true, nullable = false)
     private String name;
+
+    @ManyToMany(mappedBy = "skills")
+    private Collection<Source> sources =  new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -32,19 +37,27 @@ public class Skill {
     }
 
 
+    public Collection<Source> getSources() {
+        return sources;
+    }
+
+    public void setSources(Collection<Source> sources) {
+        this.sources = sources;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Skill skill = (Skill) o;
         return Objects.equals(id, skill.id) &&
-                Objects.equals(name, skill.name);
+                Objects.equals(name, skill.name) &&
+                Objects.equals(sources, skill.sources);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, sources);
     }
 
     @Override
@@ -52,6 +65,7 @@ public class Skill {
         return "Skill{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", sources=" + sources +
                 '}';
     }
 }

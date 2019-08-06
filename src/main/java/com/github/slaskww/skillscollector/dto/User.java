@@ -1,13 +1,11 @@
-package com.github.slaskww.skillscollector.model;
+package com.github.slaskww.skillscollector.dto;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "USERS")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +24,10 @@ public class User {
     private String username;
 
     @ManyToMany
-    @JoinTable(name = "user_known_sources",
-            joinColumns = {@JoinColumn(name="users_id")},
-            inverseJoinColumns = {@JoinColumn(name="sources_id")})
-    private Set<Source> sourceSet = new HashSet<>();
+    @JoinTable(name = "USER_KNOWN_SOURCES",
+            joinColumns = {@JoinColumn(name="USER_ID")},
+            inverseJoinColumns = {@JoinColumn(name="SOURCE_ID")})
+    private Collection<Source> sources = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -71,12 +69,12 @@ public class User {
         this.username = username;
     }
 
-    public Set<Source> getSourceSet() {
-        return sourceSet;
+    public Collection<Source> getSources() {
+        return sources;
     }
 
-    public void setSourceSet(Set<Source> sourceSet) {
-        this.sourceSet = sourceSet;
+    public void setSources(Collection<Source> sources) {
+        this.sources = sources;
     }
 
     @Override
@@ -87,14 +85,14 @@ public class User {
         return Objects.equals(id, user.id) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
-                password.equals(user.password) &&
-                username.equals(user.username) &&
-                Objects.equals(sourceSet, user.sourceSet);
+                Objects.equals(password, user.password) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(sources, user.sources);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, password, username, sourceSet);
+        return Objects.hash(id, firstName, lastName, password, username, sources);
     }
 
     @Override
@@ -105,7 +103,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", username='" + username + '\'' +
-                ", sourceSet=" + sourceSet +
+                ", sources=" + sources +
                 '}';
     }
 }

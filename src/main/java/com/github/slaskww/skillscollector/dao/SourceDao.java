@@ -1,7 +1,6 @@
 package com.github.slaskww.skillscollector.dao;
 
-import com.github.slaskww.skillscollector.model.Skill;
-import com.github.slaskww.skillscollector.model.Source;
+import com.github.slaskww.skillscollector.dto.Source;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
