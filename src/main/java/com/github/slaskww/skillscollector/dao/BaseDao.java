@@ -18,6 +18,10 @@ public class BaseDao {
         this.sessionFactory = sessionFactory;
     }
 
+
+    //Function<Session, R>  - This is a functional interface and can therefore be used as the assignment target for a lambda expression or method reference.
+    //Represents a function that accepts one argument (Session) and produces a result (R).
+    //This is a functional interface whose functional method is apply(Object).
     protected <R> R produceInTransaction(Function<Session, R> function) {
         Transaction transaction = null;
         R result = null;
@@ -33,7 +37,9 @@ public class BaseDao {
         }
         return result;
     }
-
+    //This is a functional interface and can therefore be used as the assignment target for a lambda expression or method reference.
+    //Consumer<Session> - Represents an operation that accepts a single input argument and returns no result.
+    //This is a functional interface whose functional method is accept(Object).
     protected void executeInTransaction(Consumer<Session> consumer) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
