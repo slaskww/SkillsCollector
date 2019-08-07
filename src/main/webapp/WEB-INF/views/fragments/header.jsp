@@ -11,7 +11,7 @@
 
 <c:url  var="skills" value="/user/skills"/>
 <c:url  var="register" value="/register"/>
-<c:url  var="login" value="../../../foo.jsp" />
+<c:url  var="login" value="/login"/>
 <c:url  var="logout" value="/logout"/>
 <c:url  var="sources" value="/user/sources"/>
 <c:url  var="unknownsources" value="/user/unknown-sources"/>

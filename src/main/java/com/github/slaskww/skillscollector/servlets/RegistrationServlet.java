@@ -52,7 +52,6 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     private User createUser(Map<String, String[]> params){
-
         User user = new User();
         user.setFirstName(params.get("firstName")[0].toUpperCase());
         user.setLastName(params.get("lastName")[0].toUpperCase());
@@ -73,21 +72,20 @@ public class RegistrationServlet extends HttpServlet {
         }
 
         if (!usernameValidation(params.get("username"))){
-            errors.put("username", "Pole 'username' jest za krótkie. Powinno składać się z co najmniej 6 znaków");
+            errors.put("username", "Pole 'Nazwa użytkownika' jest za krótkie. Powinno składać się z co najmniej 6 znaków");
         }
 
         if (!passwordValidation(params.get("password"))){
-            errors.put("password", "Pole 'password' powinno posiadać co najmniej 8 znaków w tym znak specjalny (@#$%%&*) i wielką literę.");
+            errors.put("password", "Pole 'Hasło' powinno posiadać co najmniej 8 znaków w tym znak specjalny (@#$%%&*) i wielką literę.");
         }
 
         if (!confirmedPasswordValidation(params.get("password"), params.get("confirmedPassword"))){
-            errors.put("confirmedPassword", "Pola 'confirmedPassword' i 'password' różnią się. Pola powinny mieć taką samą wartość");
+            errors.put("confirmedPassword", "Podane hasła różnią się. Pola powinny mieć taką samą wartość");
         }
 
     }
 
     private boolean  nameValidation(String[] nameToCheck){
-
         String name = nameToCheck[0];
 
         if (name.equals("")) {
@@ -117,7 +115,6 @@ public class RegistrationServlet extends HttpServlet {
 
 
     private boolean usernameValidation(String[] usernameToCheck){
-
         String username = usernameToCheck[0];
 
         if (username.equals("")) {
@@ -136,7 +133,6 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     private boolean passwordValidation(String[] passwordToCheck){
-
         String password = passwordToCheck[0];
 
         if (password.equals("")) {
@@ -152,7 +148,6 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     private boolean confirmedPasswordValidation(String[] passwordToCheck , String[] confirmedPasswordToCheck){
-
         String password = passwordToCheck[0];
         String confirmedPassword = confirmedPasswordToCheck[0];
 

@@ -24,35 +24,35 @@
 <div>
     <form method="post" action="/register">
         <div class="form-group col-md-6 offset-md-3 p-2 mb-1 bg-light text-dark">
-            <label>imię</label>
+            <label>Imię:</label>
             <input class="form-control" type="text" name="firstName" id="firstName">
             <c:if test="${requestScope.get('errorMap').containsKey('firstName')}">
                 <small class="text-danger">${requestScope.get('errorMap').get('firstName')}</small>
             </c:if>
         </div>
         <div class="form-group col-md-6 offset-md-3 p-2 mb-1 bg-light text-dark">
-            <label>nazwisko</label>
+            <label>Nazwisko:</label>
             <input class="form-control" type="text" name="lastName" id="lastName">
             <c:if test="${requestScope.get('errorMap').containsKey('lastName')}">
                 <small class="text-danger">${requestScope.get('errorMap').get('lastName')}</small>
             </c:if>
         </div>
         <div class="form-group col-md-6 offset-md-3 p-2 mb-1 bg-light text-dark">
-            <label>nazwa użytkownika</label>
+            <label>Nazwa użytkownika:</label>
             <input class="form-control" type="text" name="username" id="username">
             <c:if test="${requestScope.get('errorMap').containsKey('username')}">
                 <small class="text-danger">${requestScope.get('errorMap').get('username')}</small>
             </c:if>
         </div>
         <div class="form-group col-md-6 offset-md-3 p-2 mb-1 bg-light text-dark">
-            <label>hasło</label>
+            <label>Hasło:</label>
             <input class="form-control" type="password" name="password" id="password">
             <c:if test="${requestScope.get('errorMap').containsKey('password')}">
                 <small class="text-danger">${requestScope.get('errorMap').get('password')}</small>
             </c:if>
         </div>
         <div class="form-group col-md-6 offset-md-3 p-2 mb-1 bg-light text-dark">
-            <label>powtórz hasło</label>
+            <label>Powtórz hasło:</label>
             <input class="form-control" type="password" name="confirmedPassword" id="confirmedPassword">
             <c:if test="${requestScope.get('errorMap').containsKey('confirmedPassword')}">
                 <small class="text-danger">${requestScope.get('errorMap').get('confirmedPassword')}</small>
