@@ -24,8 +24,8 @@ public class AuthorizationFilter extends HttpFilter {
                 chain.doFilter(req, res);
                 break;
             case "/skills":
-            case "/user/sources":
-            case "/user/unknown-sources":
+            case "/sources":
+            case "/unknown-sources":
                 if (req.getSession().getAttribute("user") == null) {
                     res.sendRedirect("/login");
                 } else {

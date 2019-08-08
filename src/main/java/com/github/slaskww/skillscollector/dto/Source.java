@@ -15,7 +15,10 @@ public class Source {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER) //ustawiamy FetchType.EAGER, żeby przy pobieraniu Encji Source, Hibernate automatycznie pobierał pola będące kolekcjami Skillsów
+    // (Hiber jest nadgorliwy jedynie wobec typów prostych. Nie pobiera typów złożonych od razu, lecz dopiero wtedy, gdy użytkownik jawnie o nie poprosi. Tryb Lazy służy temu,
+    // by zoptymalizować wydajność pobierania danych z SQL. Gdyby nie chodziło o kolekcję obiektów Skill a o dużo większe obiekty przechowywane w kolekcjach, to pobieranie takich danych
+    // zajmowałoby dużo czasu. Stąd domyślnie kolekcje mają FetchType ustawiony na Lazy)
     @JoinTable(name = "SOURCES_ATTACHED_SKILLS",
             joinColumns = {@JoinColumn(name = "SOURCE_ID")},
             inverseJoinColumns = {@JoinColumn(name = "SKILL_ID")})

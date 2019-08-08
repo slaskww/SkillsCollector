@@ -13,8 +13,8 @@
 <c:url  var="register" value="/register"/>
 <c:url  var="login" value="/login"/>
 <c:url  var="logout" value="/logout"/>
-<c:url  var="sources" value="/user/sources"/>
-<c:url  var="unknownsources" value="/user/unknown-sources"/>
+<c:url  var="sources" value="/sources"/>
+<c:url  var="unknownsources" value="/unknown-sources"/>
 
 
   <header>

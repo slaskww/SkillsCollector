@@ -1,5 +1,7 @@
 package com.github.slaskww.skillscollector.dao;
 
+import com.github.slaskww.skillscollector.dto.Skill;
+import com.github.slaskww.skillscollector.dto.Source;
 import com.github.slaskww.skillscollector.dto.User;
 import org.hibernate.SessionFactory;
 
@@ -67,5 +69,16 @@ public class UserDao extends BaseDao {
                         .setParameter("username", username)
                         .setParameter("password", password)
                         .getResultList());
+    }
+
+    public List<Source> getAllSourcesForUser(String username, String password){
+        return super.produceInTransaction(
+                session -> session.createQuery(
+                        "Select s " +
+                                "From User u join u.sources s " +
+                                "Where u.username = :username and u.password = :password", Source.class)
+        .setParameter("username", username)
+        .setParameter("password", password)
+        .getResultList());
     }
 }
