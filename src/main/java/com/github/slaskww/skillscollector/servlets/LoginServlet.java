@@ -38,8 +38,8 @@ public class LoginServlet extends HttpServlet {
             User user = getUser(params);
             req.getSession().invalidate(); //uniewaznienie bieżącej sesji
             req.getSession(true).setAttribute("user", user); //utworzenie nowej sesji z atrybutem 'user'
-           // resp.sendRedirect("/user/skills");
-            req.getRequestDispatcher("WEB-INF/foo.jsp").forward(req, resp);
+            resp.sendRedirect("/skills");
+            //req.getRequestDispatcher("WEB-INF/foo.jsp").forward(req, resp);
 
 
         } else {

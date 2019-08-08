@@ -23,7 +23,7 @@ public class AuthorizationFilter extends HttpFilter {
             case "/logout":
                 chain.doFilter(req, res);
                 break;
-            case "/user/skills":
+            case "/skills":
             case "/user/sources":
             case "/user/unknown-sources":
                 if (req.getSession().getAttribute("user") == null) {

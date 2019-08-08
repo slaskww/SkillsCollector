@@ -10,6 +10,7 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
+    <title>Login</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,7 +19,7 @@
 <body>
 <jsp:include page="fragments/header.jsp"/>
 <div class="col-md-12 text-center">
-    <h2>Zaloguj się</h2>
+    <h2>Logowanie</h2>
 </div>
 <form action="/login" method="post">
     <div class="form-group col-md-6 offset-md-3 p-2 mb-1 bg-light text-dark">
@@ -35,7 +36,7 @@
     <div>
         <input class="btn btn-primary col-md-4 offset-md-4" type="submit" value="Zarejestruj">
     </div>
-    <div class="fixed-bottom text-center p-1 mb-1 bg-light text-dark">
+    <div class="fixed-bottom text-center p-2 mb-2 bg-light text-dark">
         <jsp:include page="fragments/footer.jsp"/>
     </div>
 

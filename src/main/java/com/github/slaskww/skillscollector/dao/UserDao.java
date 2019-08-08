@@ -56,4 +56,16 @@ public class UserDao extends BaseDao {
                         .setParameter("password", password)
                         .getResultList());
     }
+
+    public List<String> getAllSkillsForUser(String username, String password) {
+        return super.produceInTransaction(
+                session -> session.createQuery(
+                        "SELECT sk.name " +
+                                "FROM Source so join so.skills sk  " +
+                                "WHERE so.id in (" +
+                                "Select s.id From User u join u.sources s Where u.username = :username and u.password = :password)", String.class)
+                        .setParameter("username", username)
+                        .setParameter("password", password)
+                        .getResultList());
+    }
 }

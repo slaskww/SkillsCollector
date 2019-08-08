@@ -38,7 +38,7 @@ public class HibernateInitializer implements ServletContextListener {
             hbnProperties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
             // W przypadku gdy silnik Hibernate ma tworzyć schemat bazy danych, to poniżej
             // użyj opcji create-drop albo update
-            hbnProperties.put(Environment.HBM2DDL_AUTO, "create");
+            hbnProperties.put(Environment.HBM2DDL_AUTO, "update");
             configuration.setProperties(hbnProperties);
 
             // Odkomentuj poniższe instrukcje po utworzeniu klas encji (kolejne zadania)

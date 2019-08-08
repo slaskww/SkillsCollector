@@ -63,7 +63,7 @@
         </div>
     </form>
 </div>
-<div class="fixed-bottom text-center p-1 mb-1 bg-light text-dark">
+<div class="fixed-bottom text-center p-2 mb-2 bg-light text-dark">
     <jsp:include page="fragments/footer.jsp"/>
 </div>
 
