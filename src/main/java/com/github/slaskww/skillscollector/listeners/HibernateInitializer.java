@@ -27,7 +27,7 @@ public class HibernateInitializer implements ServletContextListener {
 
             Properties hbnProperties = new Properties();
             hbnProperties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-            hbnProperties.put(Environment.URL, "jdbc:mysql://localhost:3306/skills_collector?useSSL=false&serverTimezone=UTC");
+            hbnProperties.put(Environment.URL, "jdbc:mysql://localhost:3306/skills_collector?useSSL=false&serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8");
             hbnProperties.put(Environment.USER, "basket");
             hbnProperties.put(Environment.PASS, "basket123");
             hbnProperties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
@@ -36,7 +36,7 @@ public class HibernateInitializer implements ServletContextListener {
             hbnProperties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
             // W przypadku gdy silnik Hibernate ma tworzyć schemat bazy danych, to poniżej
             // użyj opcji create-drop albo update
-            hbnProperties.put(Environment.HBM2DDL_AUTO, "update");
+            hbnProperties.put(Environment.HBM2DDL_AUTO, "create");
             configuration.setProperties(hbnProperties);
 
 
