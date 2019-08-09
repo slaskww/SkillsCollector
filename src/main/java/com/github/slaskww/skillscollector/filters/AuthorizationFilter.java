@@ -26,7 +26,8 @@ public class AuthorizationFilter extends HttpFilter {
             case "/skills":
             case "/sources":
             case "/unknown-sources":
-            case "/":
+            case "/confirm":
+            case "" :
                 if (req.getSession().getAttribute("user") == null) {
                     res.sendRedirect("/login");
                 } else {

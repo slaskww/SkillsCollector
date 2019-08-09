@@ -18,7 +18,7 @@
 </head>
 <body>
 <jsp:include page="fragments/header.jsp"/>
-<table class="table col-md-6 offset-md-3">
+<table class="table col-md-10 offset-md-1">
     <thead class="thead-light">
     <tr>
         <th scope="col" colspan="3" class="text-center">Poziom umiejętności użytkownika ${sessionScope.get('user').getUsername()}</th>

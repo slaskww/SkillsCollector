@@ -5,6 +5,7 @@ import com.github.slaskww.skillscollector.dto.Source;
 import com.github.slaskww.skillscollector.dto.User;
 import org.hibernate.SessionFactory;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -80,5 +81,18 @@ public class UserDao extends BaseDao {
         .setParameter("username", username)
         .setParameter("password", password)
         .getResultList());
+    }
+
+    public void addNewSource(User user, Source source){
+        super.executeInTransaction(session -> {
+            Source sourceProxy = session.get(Source.class, source.getId());
+
+            user.getSources().add(sourceProxy);
+            sourceProxy.getUsers().add(user);
+
+            session.update(sourceProxy);
+            session.update(user);
+        });
+
     }
 }

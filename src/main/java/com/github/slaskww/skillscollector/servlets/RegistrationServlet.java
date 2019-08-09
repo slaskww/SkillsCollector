@@ -72,15 +72,15 @@ public class RegistrationServlet extends HttpServlet {
         }
 
         if (!usernameValidation(params.get("username"))){
-            errors.put("username", "Pole 'Nazwa użytkownika' jest za krótkie. Powinno składać się z co najmniej 6 znaków");
+            errors.put("username", "Pole 'Nazwa użytkownika' jest za krótkie. Powinno składać się z co najmniej 6 znaków.");
         }
 
         if (!passwordValidation(params.get("password"))){
-            errors.put("password", "Pole 'Hasło' powinno posiadać co najmniej 8 znaków w tym znak specjalny (@#$%%&*) i wielką literę.");
+            errors.put("password", "Pole 'Hasło' powinno posiadać co najmniej 8 znaków.");
         }
 
         if (!confirmedPasswordValidation(params.get("password"), params.get("confirmedPassword"))){
-            errors.put("confirmedPassword", "Podane hasła różnią się. Pola powinny mieć taką samą wartość");
+            errors.put("confirmedPassword", "Podane hasła różnią się. Pola powinny mieć taką samą wartość.");
         }
 
     }

@@ -18,17 +18,17 @@
 <body>
 <jsp:include page="fragments/header.jsp"/>
 
-<table class="table col-md-6 offset-md-3">
+<table class="table col-md-10 offset-md-1">
     <thead class="thead-light">
     <tr>
-        <th scope="col" colspan="5">Źródła umiejętności nieznane użytkownikowi ${sessionScope.get('user').getUsername()}</th>
+        <th scope="col" colspan="5" class="text-center">Źródła umiejętności nieznane użytkownikowi ${sessionScope.get('user').getUsername()}</th>
     </tr>
     <tr>
         <th scope="col">#</th>
         <th scope="col">nazwa źródła</th>
         <th scope="col">opis</th>
         <th scope="col">kreowane umiejętności</th>
-        <th scope="col">akcje</th>
+        <th scope="col">akcja</th>
     </tr>
     </thead>
     <tbody>
@@ -38,7 +38,10 @@
             <td>${source.getKey().getName()}</td>
             <td>${source.getKey().getDescription()}</td>
             <td>${source.getValue()}</td>
-            <td>empty</td>
+            <c:url var="confirm" value="/confirm">
+            <c:param name="id" value="${source.getKey().getId()}"/>
+            </c:url>
+            <td><a href="${confirm}">dodaj umiejętność</a></td>
         </tr>
 
     </c:forEach>

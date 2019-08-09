@@ -44,9 +44,6 @@ public class UnknownSourcesServlet extends HttpServlet {
                                 .reduce((s, s2) -> s.concat(", ").concat(s2)).orElse("")));
 
 
-        System.out.println("lista Soursów");
-        unknownSourcesMap.entrySet().forEach(entry -> System.out.println(entry.getKey().getName() + ", " + entry.getKey().getDescription() + " " + entry.getValue()));
-
         req.setAttribute("unknownSourcesMap", unknownSourcesMap);
         req.getRequestDispatcher("WEB-INF/views/user-unknown-sources.jsp").forward(req, resp);
     }

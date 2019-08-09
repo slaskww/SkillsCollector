@@ -9,35 +9,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false"%>
 
-<c:url  var="skills" value="/skills"/>
 <c:url  var="register" value="/register"/>
 <c:url  var="login" value="/login"/>
 <c:url  var="logout" value="/logout"/>
+<c:url  var="skills" value="/skills"/>
 <c:url  var="sources" value="/sources"/>
 <c:url  var="unknownsources" value="/unknown-sources"/>
 
 
   <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: whitesmoke">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                      <a class="nav-link" href="${skills}">Skills <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="${register}">Zarejestruj <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="${register}">Register <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="${login}">Zaloguj <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="${login}">Login <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="${logout}">Wyloguj <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="${logout}">Logout <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="${skills}">Umiejętności <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="${sources}">Sources <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="${sources}">Poznane źródła <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                      <a class="nav-link" href="${unknownsources}">Unknown sources <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="${unknownsources}">Nowe źródła <span class="sr-only">(current)</span></a>
                   </li>
 
               </ul>

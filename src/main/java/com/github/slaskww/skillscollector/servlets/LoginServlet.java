@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/login")
+@WebServlet(urlPatterns ={"/login", ""})
 public class LoginServlet extends HttpServlet {
 
     private UserDao userDao;
@@ -39,7 +39,6 @@ public class LoginServlet extends HttpServlet {
             req.getSession().invalidate(); //uniewaznienie bieżącej sesji
             req.getSession(true).setAttribute("user", user); //utworzenie nowej sesji z atrybutem 'user'
             resp.sendRedirect("/skills");
-            //req.getRequestDispatcher("WEB-INF/foo.jsp").forward(req, resp);
 
 
         } else {

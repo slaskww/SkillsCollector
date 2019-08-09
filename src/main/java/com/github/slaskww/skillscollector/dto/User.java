@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false)
     private String username;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USER_KNOWN_SOURCES",
             joinColumns = {@JoinColumn(name="USER_ID")},
             inverseJoinColumns = {@JoinColumn(name="SOURCE_ID")})

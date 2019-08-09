@@ -37,14 +37,7 @@ public class UserSourcesServlet extends HttpServlet {
 
         List<Source> sources = userDao.getAllSourcesForUser(user.getUsername(), user.getPassword());
 
-
-       // sources.stream().forEach(source -> source.getSkills().stream().map(skill -> skill.getName()).forEach(s -> System.out.println(s)));
-      /*  sources.stream().forEach(source -> System.out.println(source.getName() + ", " + source.getDescription() + " {" + source.getSkills()
-                .stream().map(skill -> skill.getName()).reduce((s, s2) -> s.concat(", ").concat(s2)).orElse("") + "}"));*/
-
         Map<Source, String> sourcesMap = sources.stream().collect(Collectors.toMap(source -> source, source -> source.getSkills().stream().map(skill -> skill.getName()).reduce((s, s2) -> s.concat(", ").concat(s2)).orElse("")));
-
-        sourcesMap.entrySet().stream().forEach(entry -> System.out.println(entry.getKey().getName() + ", " + entry.getKey().getDescription() + ", " + entry.getValue()));
 
         req.setAttribute("sourcesMap", sourcesMap);
         req.getRequestDispatcher("WEB-INF/views/user-sources.jsp").forward(req, resp);

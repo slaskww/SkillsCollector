@@ -36,8 +36,6 @@ public class UserSkillsServlet extends HttpServlet {
 
         groupedSkills = groupedSkills.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
-       // groupedSkills.entrySet().stream().forEach(stringLongEntry -> System.out.println(stringLongEntry.getKey() + ": " + stringLongEntry.getValue()));
-
         req.setAttribute("skillMap", groupedSkills);
         req.getRequestDispatcher("WEB-INF/views/user-skills.jsp").forward(req, resp);
 
