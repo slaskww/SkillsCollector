@@ -36,10 +36,7 @@
     <div>
         <input class="btn btn-primary col-md-4 offset-md-4" type="submit" value="Zarejestruj">
     </div>
-    <div class="fixed-bottom text-center p-2 mb-2 bg-light text-dark">
         <jsp:include page="fragments/footer.jsp"/>
-    </div>
-
 </form>
 
 </body>

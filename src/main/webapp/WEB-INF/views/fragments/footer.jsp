@@ -9,4 +9,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<footer ><span>Autor: Lukasz&nbsp;<%=LocalDate.now()%>&nbsp;<%= LocalTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_LOCAL_TIME)%></span></footer>
+
+
+<div class="fixed-bottom text-center p-2 mb-2 bg-light text-dark">
+    <footer ><span>Autor: Lukasz&nbsp;<%=LocalDate.now()%>&nbsp;<%= LocalTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_LOCAL_TIME)%></span></footer>
+</div>

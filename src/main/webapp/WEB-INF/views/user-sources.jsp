@@ -42,8 +42,6 @@
     </c:forEach>
     </tbody>
 </table>
-<div class="fixed-bottom text-center p-2 mb-2 bg-light text-dark">
     <jsp:include page="fragments/footer.jsp"/>
-</div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.github.slaskww.skillscollector.dao;
 
 import com.github.slaskww.skillscollector.dto.Source;
+import com.github.slaskww.skillscollector.dto.User;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -49,4 +50,11 @@ public class SourceDao extends BaseDao{
     }
 
 
+    public List<Source> getAllUnknownSources(User user){
+        return super.produceInTransaction(
+                session -> session.createQuery(
+                "Select so From Source so Where so.id not in ( Select sou.id From User us join us.sources sou Where us.id = :id)", Source.class)
+                .setParameter("id", user.getId())
+                .getResultList());
+    }
 }
